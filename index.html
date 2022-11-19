@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <script>
+
+ function binary(num){
+    //document.write(num.toString());
+
+    var bit = [0, 0, 0 ,0 ,0 ,0 ,0, 0];
+    var index = 0;
+    var bitnum = 128;
+    var oddflag = false;
+
+    
+    
+    if(num%2 !=0)
+    oddflag = true;
+
+    
+    if(num%2 ==0)
+    while(num > 0){
+        if(num >= bitnum){
+        num -= bitnum;
+        bit[index] = 1;
+        } else {
+            bit[index] = 0;
+        }
+        index++;
+        bitnum /= 2;
+    }
+    
+    else
+while(num > 0){
+    if(num >= bitnum){
+        num -= bitnum;
+        bit[index] = 1;
+    } else {
+        bit[index] = 0;
+    }
+    index++;
+    bitnum /= 2;
+}
+
+
+
+if(oddflag==true)
+bit[7] = true;
+
+for(index=0; index < 8; index++){
+    if(bit[index] == 1)
+    document.write("1");
+    else
+    document.write("0");
+    if(index == 3)
+    document.write(" ");
+}
+//alert("variables declared")
+    /*
+*/
+    document.write("<br>");
+ }       
+
+ function changeText() {
+    let a = document.getElementById("textbox1");
+    let length1 = a.value.length;
+   // alert(length1.toString());
+    
+    document.getElementById("header1").innerHTML = a.value;
+
+    var int1 = 0;
+  
+    for(int1=0; int1 < length1; int1++){
+        var char1 = a.value.substring(int1, int1+1)
+        var decimal = char1.charCodeAt(0);
+        document.write(char1 + " is ");
+        document.write(decimal.toString() + " in ASCII and in binary is: ");
+        binary(decimal);
+    }
+
+    //document.write("<p>kek</p>");
+    //document.write("<p>333</p>");
+
+ }      
+
+    </script>
+
+</head>
+<body>
+  
+
+  <h1 id="header1">Convert your name or word(s) into binary</h1>
+  <input type="text" id="textbox1">
+  <button onclick="changeText()">Convert</button>
+</body>
+</html>
